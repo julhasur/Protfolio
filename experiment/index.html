@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Word Letter Animation</title>
+<style>
+  .falling {
+    animation: fallDown 2s infinite alternate ease-in-out;
+}
+
+.letter {
+    display: inline-block;
+    color: #ca3c3c; /* Default color for letters */
+    font-size: 24px; /* Adjust font size as needed */
+    position: relative; /* Position relative for animation */
+}
+
+
+/* Style for individual letters */
+.letter {
+    display: inline-block;
+    color: #4019c0; /* Default color for letters */
+    font-size: 24px; /* Adjust font size as needed */
+    position: relative; /* Position relative for animation */
+}
+
+/* Animation for the falling effect */
+@keyframes fallDown {
+    0% {
+        transform: translateY(-2px);
+    }
+    50% {
+        transform: translateY(2px);
+    }
+    100% {
+        transform: translateY(-2px);
+    }
+}
+
+
+</style>
+</head>
+<body>
+
+<span id="word">example</span>
+
+<script>
+// Function to animate each letter of the word
+function animateWord(wordSpan) {
+  var word = wordSpan.innerText; // Get the word from the span
+  wordSpan.innerHTML = ''; // Clear the original content
+  for (var i = 0; i < word.length; i++) {
+    var letter = word[i]; // Get each letter of the word
+    var letterSpan = document.createElement('span'); // Create a new span for the letter
+    letterSpan.textContent = letter; // Set the text content of the span to the letter
+    letterSpan.classList.add('letter'); // Add the 'letter' class to the span
+   
+    // Add random rotation angle and color to each letter
+ 
+      // Apply random transformations for position
+      var translateX = Math.random() * 20 - 10; // Random horizontal translation (-10 to 10 pixels)
+      var translateY = Math.random() * 20 - 10; // Random vertical translation (-10 to 10 pixels)
+      var rotate = Math.random() * 20 - 10; // Random rotation (-10 to 10 degrees)
+      
+      // Apply transformations to the letter
+      letterSpan.style.transform = 'translate(' + translateX + 'px, ' + translateY + 'px) rotate(' + rotate + 'deg)';
+      
+
+    
+    letterSpan.style.transform = 'rotate(' + (Math.random() * 30 - 15) + 'deg)'; // Apply random rotation
+    
+    if (i === word.length ) {
+        
+      letterSpan.classList.add('falling'); // Add falling animation to the last letter
+    }
+    wordSpan.appendChild(letterSpan); // Append the letter span to the word span
+  }
+}
+
+// Call the function on page load
+window.onload = function() {
+  animateWord(document.getElementById('word')); // Call the function with the word span
+};
+</script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Word Letter Animation</title>
+</head>
+<body>
+
+<span id="word">example</span>
+
+<!-- Include the external JavaScript file -->
+<script src="script.js"></script>
+
+</body>
+</html>s  
